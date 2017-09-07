@@ -1,12 +1,12 @@
-<div *ngFor="let message of messages">
-  {{ message.owner }} by: {{ message.owner }}
+<div *ngFor="let message of webService.messages">
+  {{ message.owner }} by: {{ message.text }}
 </div>
 
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">

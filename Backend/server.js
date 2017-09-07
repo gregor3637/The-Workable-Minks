@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 messages = [
@@ -7,6 +8,8 @@ messages = [
     {text: '3 text', owner: 'Gosho'}
   ];
 
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -14,11 +17,19 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/messages', (req, res) => {
-    res.json(messages); 
-})
+var api = express.Router();
 
+api.get('/messages', (req, res) => {
+    res.json(messages);
+});
+
+api.post('/messages', (req, res) => {
+    messages.push(req.body);
+    res.json(req.body);
+});
+
+app.use('/api', api);
 
 app.listen(1234, () => {
     console.log('Listening to port 1234');
-})
+});

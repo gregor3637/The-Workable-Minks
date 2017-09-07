@@ -7,18 +7,8 @@ import { WebService } from './../services/web.service';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit {
-
-  messages = [
-    {text: 'Random text', owner: 'Peshoez'},
-    {text: 'Gosho text message', owner: 'Gosho'}
-  ];
+export class MessagesComponent {
   
   constructor(private webService:WebService) { }
-
-  async ngOnInit() {
-    var response = await this.webService.getMessages();
-    this.messages = response.json();
-  }
 
 }
