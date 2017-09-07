@@ -14,14 +14,26 @@ export class WebService {
   }
 
   async getMessages() {
-    var response = await this.http.get(this.BASE_URL + '/messages').toPromise();
-    this.messages = response.json();
-    return response;
+    try {
+      var response = await this.http.get(this.BASE_URL + '/messages').toPromise();
+      this.messages = response.json();
+      return response;
+    } catch (error) {
+      this.handleError('Unable to get messages');
+    }
   }
 
   async postMessage(message) {
-    var response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
-    this.messages.push(response.json());
-    return response;
+    try {
+      var response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
+      this.messages.push(response.json());
+      return response;
+    } catch (error) {
+      this.handleError('Unable to post messages');
+    }
+  }
+  
+  private handleError(error) {
+    alert(error);
   }
 }

@@ -11,4 +11,8 @@ export class MessagesComponent {
   
   constructor(private webService:WebService) { }
 
+  ngOnChanges(...args: any[]) {
+        console.log('onChange fired');
+        console.log('changing', args);
+  }
 }
