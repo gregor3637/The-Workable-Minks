@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MessagesComponent implements OnInit {
 
   messages = [
-    {text: 'Random text', owner: 'Peshoe'},
+    {text: 'Random text', owner: 'Peshoez'},
     {text: 'Gosho text message', owner: 'Gosho'}
   ];
   
