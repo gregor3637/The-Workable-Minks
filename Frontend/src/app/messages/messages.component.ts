@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { WebService } from './../services/web.service';
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -12,9 +14,11 @@ export class MessagesComponent implements OnInit {
     {text: 'Gosho text message', owner: 'Gosho'}
   ];
   
-  constructor() { }
+  constructor(private webService:WebService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    var response = await this.webService.getMessages();
+    this.messages = response.json();
   }
 
 }
