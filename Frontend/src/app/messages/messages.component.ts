@@ -15,6 +15,8 @@ export class MessagesComponent {
     var userName = this.router.snapshot.params.name;
     console.log('messages.ts > ngOnInit > name = ' + userName);
     this.webService.getMessages(userName);
+
+    this.webService.getUser().subscribe();
   }
   
 }

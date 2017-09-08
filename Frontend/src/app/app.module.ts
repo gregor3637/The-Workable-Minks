@@ -14,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { NewMessageComponent } from './new-message/new-message.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { UserComponent } from './user/user.component';
 import { WebService } from './services/web.service';
 
 var routes = [
@@ -36,6 +37,10 @@ var routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   }
 ];
 
@@ -47,7 +52,8 @@ var routes = [
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

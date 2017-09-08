@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from './../services/auth.service';
 import { WebService } from "../services/web.service";
 
 @Component({
@@ -10,11 +11,11 @@ import { WebService } from "../services/web.service";
 export class NewMessageComponent implements OnInit {
 
   message = {
-    'owner': 'newMessageAuthor',
+    'owner': this.auth.name,
     'text': ''
   }
   
-  constructor(private webService:WebService) { }
+  constructor(private webService:WebService, private auth:AuthService) { }
 
   ngOnInit() {
   }

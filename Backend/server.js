@@ -13,6 +13,7 @@ var messages = [
 var users = [
     {
         firstName: 'a',
+        lastName: 'a',
         email: 'a',
         password: 'a',
         id: 0
@@ -48,6 +49,22 @@ api.post('/messages', (req, res) => {
     messages.push(req.body);
     res.json(req.body);
 });
+
+api.get('/users/me', checkAuthenticated, (req, res) => {
+    //if checkAuthenticated fails, we will not reach this point
+    console.log('---------get /users/me');
+    res.json(users[req.user]);
+})
+
+api.post('/users/me', checkAuthenticated, (req, res) => {
+    console.log('---------post /users/me');
+    var user = users[req.user];
+
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+
+    res.json(user);
+})
 
 auth.post('/login', (req, res) => {
     console.log('auth.post > login');
@@ -89,6 +106,26 @@ function sendAuthError(res) {
     //     message: 'email or password incorrect !'
     // });
     res.status(500).send({ error: 'email or password incorrect !' })
+}
+
+function checkAuthenticated(req, res, next) {
+    if(!req.header('authorization')) {
+        return res.status(401).send({
+            message: 'Unauthorized request. Missing authentication header'
+        });
+    }
+
+    var token = req.header('authorization').split(' ')[1];
+    var payload = jwt.decode(token, jwtSecret);
+
+    if(!payload) {
+        return res.status(401).send({
+            message: 'Unauthorized request. authorization header is invalid'
+        })
+    }
+
+    req.user = payload;
+    next();
 }
 
 app.use('/api', api);
