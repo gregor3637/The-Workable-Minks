@@ -1,4 +1,4 @@
-<div *ngFor="let msg of webService.messages">
+<div *ngFor="let msg of webService.messagesObservable | async">
   <md-card class="card">
     <md-card-title [routerLink]="['/messages', msg.owner]" style="cursor: pointer">
       {{ msg.owner }}

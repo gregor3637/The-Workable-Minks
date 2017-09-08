@@ -9,7 +9,6 @@ import { WebService } from './../services/web.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent {
-
   constructor(private webService:WebService, private router:ActivatedRoute) { }
 
   ngOnInit(){
@@ -17,4 +16,5 @@ export class MessagesComponent {
     console.log('messages.ts > ngOnInit > name = ' + userName);
     this.webService.getMessages(userName);
   }
+  
 }
