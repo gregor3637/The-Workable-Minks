@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { MessagesComponent } from './messages/messages.component';
 import { NavComponent } from './nav/nav.component';
 import { NewMessageComponent } from './new-message/new-message.component';
+import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { WebService } from './services/web.service';
 
@@ -25,6 +26,10 @@ var routes = [
   {
     path: 'messages/:name',
     component:MessagesComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
@@ -34,7 +39,8 @@ var routes = [
     MessagesComponent,
     NewMessageComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
