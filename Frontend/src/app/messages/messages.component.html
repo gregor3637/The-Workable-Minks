@@ -1,0 +1,10 @@
+<div *ngFor="let msg of webService.messages">
+  <md-card class="card">
+    <md-card-title style="cursor: pointer">
+      {{ msg.owner }}
+    </md-card-title>
+    <md-card-content>
+      {{ msg.text }}
+    </md-card-content>
+  </md-card>
+</div>
