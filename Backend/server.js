@@ -1,15 +1,22 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var jwt = require('jsonwebtoken');
 
-messages = [
+var jwtSecret = '123';
+var messages = [
     {text: '1 text', owner: 'Peshoez'},
     {text: '2 text', owner: 'penelope'},
     {text: '3 text', owner: 'Gosho'}
 ];
 
 var users = [
-
+    {
+        firstName: 'a',
+        email: 'a',
+        password: 'a',
+        id: 0
+    }
 ];
 
 app.use(bodyParser.json());
@@ -42,9 +49,47 @@ api.post('/messages', (req, res) => {
     res.json(req.body);
 });
 
+auth.post('/login', (req, res) => {
+    console.log('auth.post > login');
+    var matchedUser = users.find((passedUser) => {
+        return passedUser.email === req.body.email;
+    });
+
+    if(!matchedUser){
+        return sendAuthError(res);
+    }
+
+    if(matchedUser.password == req.body.password) {
+        sendToken(matchedUser, res);
+    } else {
+        return sendAuthError(res);
+    }
+})
+
 auth.post('/register', (req, res) => {
-    users.push(req.body);
+    var index = users.push(req.body) -1;
+
+    var user = users[index];
+    user.id = index;
+    
+    sendToken(user, res);
 });
+
+function sendToken(user, res) {
+    var token = jwt.sign(user.id, jwtSecret);
+    res.json({
+        token: token,
+        firstName: user.firstName
+    });
+}
+
+function sendAuthError(res) {
+    // return res.json({
+    //     success: false,
+    //     message: 'email or password incorrect !'
+    // });
+    res.status(500).send({ error: 'email or password incorrect !' })
+}
 
 app.use('/api', api);
 app.use('/auth', auth);
