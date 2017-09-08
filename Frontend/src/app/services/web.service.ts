@@ -10,16 +10,22 @@ export class WebService {
   messages = [];
 
   constructor(private http:Http, private sb:MdSnackBar) {
-    this.getMessages();
+    this.getMessages('');
   }
 
-  async getMessages(){ 
-    try {
-      var response = await this.http.get(this.BASE_URL + '/messages').toPromise();
-      this.messages = response.json();
-    } catch (error) {
-      this.handleErrors('unable to get messages');
-    }
+  getMessages(user){ 
+    console.log('web.ts > getMessages > user = ' + user);
+    user = (user)
+      ? '/' + user
+      : '';
+    console.log('web.ts > getMessages > user = ' + user);
+
+    
+      this.http.get(this.BASE_URL + '/messages' + user).subscribe((response) => {
+        this.messages = response.json();
+      },(error) => {
+        this.handleErrors('unable to get messages');
+      });
   }
 
   async postMessage(message) {

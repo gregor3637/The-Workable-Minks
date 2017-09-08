@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { WebService } from './../services/web.service';
 
 @Component({
@@ -9,14 +10,11 @@ import { WebService } from './../services/web.service';
 })
 export class MessagesComponent {
 
-  // messages = [
-  // ]
-  constructor(private webService:WebService) { }
+  constructor(private webService:WebService, private router:ActivatedRoute) { }
 
-  // async ngOnInit() {
-  //   var response = await this.webService.getMessages();
-  //   console.log( response)
-  //   // this.messages = result.json();
-  // }
-
+  ngOnInit(){
+    var userName = this.router.snapshot.params.name;
+    console.log('messages.ts > ngOnInit > name = ' + userName);
+    this.webService.getMessages(userName);
+  }
 }

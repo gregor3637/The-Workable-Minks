@@ -1,6 +1,6 @@
 <div *ngFor="let msg of webService.messages">
   <md-card class="card">
-    <md-card-title style="cursor: pointer">
+    <md-card-title [routerLink]="['/messages', msg.owner]" style="cursor: pointer">
       {{ msg.owner }}
     </md-card-title>
     <md-card-content>
