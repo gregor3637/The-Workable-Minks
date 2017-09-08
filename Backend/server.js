@@ -6,7 +6,11 @@ messages = [
     {text: '1 text', owner: 'Peshoez'},
     {text: '2 text', owner: 'penelope'},
     {text: '3 text', owner: 'Gosho'}
-  ];
+];
+
+var users = [
+
+];
 
 app.use(bodyParser.json());
 
@@ -18,6 +22,7 @@ app.use((req, res, next) => {
 });
 
 var api = express.Router();
+var auth = express.Router();
 
 api.get('/messages', (req, res) => {
     res.json(messages);
@@ -37,8 +42,13 @@ api.post('/messages', (req, res) => {
     res.json(req.body);
 });
 
+auth.post('/register', (req, res) => {
+    users.push(req.body);
+});
+
 app.use('/api', api);
+app.use('/auth', auth);
 
 app.listen(1234, () => {
-    console.log('Listening to port 1234');
+    console.log('g Listening to port 1234');
 });
