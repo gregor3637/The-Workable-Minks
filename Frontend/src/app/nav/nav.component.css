@@ -1,0 +1,47 @@
+.example-header-image-male{
+  background-image: url('../../assets/images/maleIcon.jpg');
+  background-size: cover;
+}
+
+.example-header-image-female{
+  background-image: url('../../assets/images/femaleIcon.jpg');
+  background-size: cover;
+}
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.myHover:hover {
+    background: #000000
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 10%;
+  align-items: center;
+  justify-content: center;
+}
+CSS
+HTMLJSCSS
+.listdemoListControls md-divider {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.listdemoListControls md-list {
+  padding-top: 0; }
+
+.listdemoListControls md-list-item > p,
+.listdemoListControls md-list-item > .md-list-item-inner > p,
+.listdemoListControls md-list-item .md-list-item-inner > p,
+.listdemoListControls md-list-item .md-list-item-inner > .md-list-item-inner > p {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }

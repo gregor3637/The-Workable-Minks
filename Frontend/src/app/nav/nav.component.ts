@@ -13,5 +13,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  getGenderStyleClass(){
+    console.log('nav getGender called')
+    return 'example-header-image-female';
+  }
 }
