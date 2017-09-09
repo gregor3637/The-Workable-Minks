@@ -7,7 +7,8 @@ var jwtSecret = '123';
 var messages = [
     {text: '1 text', owner: 'Peshoez'},
     {text: '2 text', owner: 'penelope'},
-    {text: '3 text', owner: 'Gosho'}
+    {text: '3 text', owner: 'Gosho'},
+    {text: '4 text', owner: 'asd'}
 ];
 
 var users = [
@@ -16,7 +17,8 @@ var users = [
         lastName: 'a',
         email: 'a',
         password: 'a',
-        id: 0
+        id: 0,
+        messages: [''] 
     }
 ];
 
@@ -47,21 +49,50 @@ api.get('/messages/:user', (req, res) => {
 
 api.post('/messages', (req, res) => {
     messages.push(req.body);
+    var index = -1;
+    for(i = 0; i < users.length; i++) {
+        if (users[i].firstName == req.body.owner){
+            index = i;
+            break;
+        }
+    }
+    
+    console.log('BODY:-----------');
+    console.log(req.body);
+    console.log('USERS:-----------');
+    console.log(users);
+    console.log('OWMER:-----------');
+    console.log(users[req.body.owner]);
+    console.log('OLD:-----------');
+    console.log(users[index]);
+    users[index].messages.push(req.body);
+    console.log('NEW:-----------');
+    console.log(users[index]);
+    
     res.json(req.body);
 });
 
 api.get('/users/me', checkAuthenticated, (req, res) => {
     //if checkAuthenticated fails, we will not reach this point
     console.log('---------get /users/me');
+    // console.log('---------asdasdasd /users/me');
+    console.log('---------new ');
+    console.log(users[req.user]);
+    
     res.json(users[req.user]);
 })
 
 api.post('/users/me', checkAuthenticated, (req, res) => {
-    console.log('---------post /users/me');
+    // console.log('---------post /users/me');
     var user = users[req.user];
 
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
+    for (var i=0; i<messages.length; i++) {
+        if( messages[i].owner == user.firstName){
+            user.messages.push(messages[i]);            
+        }
+    }
 
     res.json(user);
 })
@@ -88,6 +119,7 @@ auth.post('/register', (req, res) => {
 
     var user = users[index];
     user.id = index;
+    user.messages = [];
     
     sendToken(user, res);
 });

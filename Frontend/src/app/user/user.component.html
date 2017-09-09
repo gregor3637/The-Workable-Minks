@@ -12,5 +12,13 @@
         <md-card-actions>
             <button (click)="updateUserData()" md-raised-button color="primary">Update</button>
         </md-card-actions>
+    
+    
+
     </md-card-content>
 </md-card>
+
+<h1>{{model.messages[0].content}}</h1>
+<ul>
+    <li *ngFor="let msg of model.messages">{{msg.text}}</li>
+</ul>

@@ -10,15 +10,17 @@ import { WebService } from './../services/web.service';
 export class UserComponent implements OnInit {
   model = {
     firstName: '',
-    lastName: ''
-  }
-  
+    lastName: '',
+    messages: []
+  };
+
   constructor(private webService:WebService) { }
 
   ngOnInit() {
     this.webService.getUser().subscribe((res) => {
       this.model.firstName = res.firstName;
       this.model.lastName = res.lastName;
+      this.model.messages = res.messages;
     });
   }
 
