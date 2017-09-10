@@ -3,19 +3,69 @@
   background-size: cover;
 }
 
+html, body, material-app, md-sidenav-container, .my-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .example-header-image-female{
   background-image: url('../../assets/images/femaleIcon.jpg');
   background-size: cover;
 }
 
 .example-container {
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 500px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.nav li {
+ background-color:blue;
+}
+.nav li.selected {
+ background-color:#000;
+}
+
+.sportsArrow{
+  margin-left: 15px;
+}
+
+.nav li{
+ background-color:#000;
+ font-size: 1.5em;
+ color: #fff;
+ padding: 15px;
+ /*margin-left: 10px;*/
+}
+
+.nav li.selected:hover{
+ background-color:#FF7F50;
+}
+
+.insideLi {
+  background-color: #0ee;
+}
+.myMenu {
+  /*background-color: #000;*/
+  background-color: #0ee;
+  
+}
+
+.myHover {
+    background: #000
+}
+.myHover span{
+    color: #fff;
 }
 
 .myHover:hover {
-    background: #000000
+    background: 	#FF7F50
 }
 
 .example-sidenav-content {
@@ -24,8 +74,7 @@
   align-items: center;
   justify-content: center;
 }
-CSS
-HTMLJSCSS
+
 .listdemoListControls md-divider {
   margin-top: 0;
   margin-bottom: 0; }
