@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { WebService } from './services/web.service';
+import { SportsProviderService } from './services/sports-provider.service';
 
 var routes = [
   {
@@ -67,7 +68,8 @@ var routes = [
   ],
   providers: [
     WebService,
-    AuthService
+    AuthService,
+    SportsProviderService
   ],
   bootstrap: [AppComponent]
 })

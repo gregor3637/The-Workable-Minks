@@ -22,6 +22,12 @@ var users = [
     }
 ];
 
+var sports = [
+    'football',
+    'basketball',
+    'volleyball'
+];
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -56,18 +62,8 @@ api.post('/messages', (req, res) => {
             break;
         }
     }
-    
-    console.log('BODY:-----------');
-    console.log(req.body);
-    console.log('USERS:-----------');
-    console.log(users);
-    console.log('OWMER:-----------');
-    console.log(users[req.body.owner]);
-    console.log('OLD:-----------');
-    console.log(users[index]);
-    users[index].messages.push(req.body);
-    console.log('NEW:-----------');
-    console.log(users[index]);
+
+    users[index].messages.push(req.body);   
     
     res.json(req.body);
 });
@@ -75,16 +71,13 @@ api.post('/messages', (req, res) => {
 api.get('/users/me', checkAuthenticated, (req, res) => {
     //if checkAuthenticated fails, we will not reach this point
     console.log('---------get /users/me');
-    // console.log('---------asdasdasd /users/me');
-    console.log('---------new ');
-    console.log(users[req.user]);
     
     res.json(users[req.user]);
 })
 
 api.post('/users/me', checkAuthenticated, (req, res) => {
-    // console.log('---------post /users/me');
-    var user = users[req.user];
+    console.log('---------post /users/me');
+    // var user = users[req.user];
 
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
@@ -96,6 +89,10 @@ api.post('/users/me', checkAuthenticated, (req, res) => {
 
     res.json(user);
 })
+
+// api.get('/sports', (req, res) => {
+//     res.json(sports);
+// });
 
 auth.post('/login', (req, res) => {
     console.log('auth.post > login');

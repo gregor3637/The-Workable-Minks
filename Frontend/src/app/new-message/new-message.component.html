@@ -4,9 +4,8 @@
         <div layout="row" layout-align="space-between center">
             <span>Select a sport:</span>
             <md-select [(ngModel)]="message.sport" placeholder="Sport" class="md-no-underline" required md-no-asterisk="false">
-              <md-option value="football">Football</md-option>
-              <md-option value="basketball">Basketball</md-option>
-              <md-option value="volleyball">Volleyball</md-option>
+              <md-option *ngFor="let s of sports" [value]="s">{{s}}</md-option>
+              
             </md-select>
           </div>
 
