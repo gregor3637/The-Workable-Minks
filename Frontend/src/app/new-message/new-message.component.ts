@@ -12,7 +12,8 @@ export class NewMessageComponent implements OnInit {
 
   message = {
     'owner': this.auth.name,
-    'text': ''
+    'text': '',
+    'sport': ''
   }
   
   constructor(private webService:WebService, private auth:AuthService) { }

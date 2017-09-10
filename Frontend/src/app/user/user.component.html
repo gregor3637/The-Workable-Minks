@@ -18,7 +18,32 @@
     </md-card-content>
 </md-card>
 
-<h1>{{model.messages[0].content}}</h1>
-<ul>
-    <li *ngFor="let msg of model.messages">{{msg.text}}</li>
+<ul> 
+    <md-card class="card">
+        <md-card-title>Football</md-card-title>
+        <li *ngFor="let msg of model.messages">           
+            <md-card-content *ngIf="msg.sport == 'football'">
+                {{ msg.text }}
+            </md-card-content>
+        </li>
+    </md-card>
+
+    <md-card class="card">
+        <md-card-title>Basketball</md-card-title>
+        <li *ngFor="let msg of model.messages">           
+            <md-card-content *ngIf="msg.sport == 'basketball'">
+                {{ msg.text }}
+            </md-card-content>
+        </li>
+    </md-card>
+
+    <md-card class="card">
+        <md-card-title>Volleyball</md-card-title>
+        <li *ngFor="let msg of model.messages">           
+            <md-card-content *ngIf="msg.sport == 'volleyball'">
+                {{ msg.text }}
+            </md-card-content>
+        </li>
+    </md-card>
 </ul>
+  
