@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule, MdButtonModule, MdCheckboxModule } from '@angular/material';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -62,6 +63,7 @@ var routes = [
     MdButtonModule,
     MaterialModule,
     FormsModule,
+    AngularFontAwesomeModule,
     ReactiveFormsModule
      ,RouterModule.forRoot(routes)
   ],

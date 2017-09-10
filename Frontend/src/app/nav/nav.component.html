@@ -1,31 +1,63 @@
-<!--<md-toolbar color="primary">
-  <button md-button routerLink="/">MessageBord</button>
-  <button md-button routerLink="/messages">Messages</button>
+<button type="button" md-button (click)="sidenav.toggle()">
+  <fa name="cog"></fa>
+      toggle sidenav
+    </button>
+<md-sidenav-container>
+  <md-sidenav [ngClass]="'myMenu'" #sidenav mode="side" opened="true">
+    
+    <!--<div *ngIf="auth.isAuthenticated">Welcome</div>-->
 
-  <span style="flex: 1 1 auto"></span>
+    <md-toolbar *ngIf="auth.isAuthenticated" color="primary" class="myHover" style="cursor: pointer" md-button routerLink="/user">
+      <div md-card-avatar [ngClass]="getGenderStyleClass()"></div>
+      <span> {{auth.name}}</span>
+    </md-toolbar>
 
-  <button *ngIf="!auth.isAuthenticated" md-button routerLink="/register">Register</button>
-  <button *ngIf="!auth.isAuthenticated" md-button routerLink="/login">Login</button>
-  <button *ngIf="auth.isAuthenticated" md-button routerLink="/user">Welcome {{auth.name}}</button>
-  <button *ngIf="auth.isAuthenticated" md-button (click)="auth.logout()">Logout</button>
-</md-toolbar>-->
+    <md-toolbar md-button routerLink="/" class="myHover" style="cursor: pointer">
+      <span>MessageBord</span>
+    </md-toolbar>
+    <md-toolbar md-button routerLink="messages" class="myHover" style="cursor: pointer">
+      <span>Messages</span>
+    </md-toolbar>
+    <md-toolbar md-button class="myHover" (click)="changeSubSportsVisibility()" style="cursor: pointer">
+      <span>
+        <fa name="list"></fa>
+        Sports
+        <i *ngIf="!isSportsActive()" class="fa fa-angle-left sportsArrow" aria-hidden="true"></i>
+        <i *ngIf="isSportsActive()" class="fa fa-angle-down sportsArrow" aria-hidden="true"></i>
+      </span>
+    </md-toolbar>
 
-<md-toolbar color="primary">
-  <button md-button routerLink="/">MessageBord</button>
-  <button md-button routerLink="/messages">Messages</button>
-  <button  md-button routerLink="/sports">Sports</button>
+    <div *ngIf="isSportsActive()">
+    <ul class="nav" *ngFor="let sport of testSports">
+      <li class="selected myHover insideLi" style="cursor: pointer">
+        <div>
+          <fa name="star-o"></fa>
+          sport
+        </div>
+      </li>
+    </ul>
+</div>
+    <md-toolbar *ngIf="!auth.isAuthenticated" md-button routerLink="/login" class="myHover" style="cursor: pointer">
+      <span>Login</span>
+    </md-toolbar>
 
-  <span style="flex: 1 1 auto"></span>
+    <md-toolbar *ngIf="auth.isAuthenticated" (click)="auth.logout()" class="myHover" style="cursor: pointer">
+      <span>Logout</span>
+    </md-toolbar>
 
-  <button *ngIf="!auth.isAuthenticated" md-button routerLink="/register">Register</button>
-  <button *ngIf="!auth.isAuthenticated" md-button routerLink="/login">Login</button>
-  <button *ngIf="auth.isAuthenticated" md-button routerLink="/user">Welcome {{auth.name}}</button>
-  <div *ngIf="auth.isAuthenticated" md-card-avatar [ngClass]="getGenderStyleClass()"></div>
-  <button *ngIf="auth.isAuthenticated" md-button (click)="auth.logout()">Logout</button>
+    <md-toolbar *ngIf="!auth.isAuthenticated" md-button routerLink="/register" class="myHover" style="cursor: pointer">
+      <span>Register</span>
+      
+    </md-toolbar>
 
-  <button md-button [mdMenuTriggerFor]="menu">Menu</button>
-<md-menu #menu="mdMenu">
-  <button md-menu-item>Item 1</button>
-  <button md-menu-item>Item 2</button>
-</md-menu>
-</md-toolbar>
+    <!--Drawer contentttt-->
+  </md-sidenav>
+  <div class="my-content">Main content
+
+
+    <router-outlet>
+
+    </router-outlet>
+
+  </div>
+</md-sidenav-container>
