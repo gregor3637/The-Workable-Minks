@@ -1,7 +1,7 @@
 <h1>Your messages:</h1>
 <ul> 
     <md-card *ngFor="let s of sports" class="card">
-        <md-card-title>{{s}}</md-card-title>
+        <md-card-title>{{s | titleCase }}</md-card-title>
         <li *ngFor="let msg of model.messages">           
             <md-card-content *ngIf="msg.sport == s">
                 {{ msg.text }}

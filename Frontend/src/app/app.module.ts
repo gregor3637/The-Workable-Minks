@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { WebService } from './services/web.service';
 import { SportsProviderService } from './services/sports-provider.service';
+import { TitleCasePipe } from './pipes/title-case.pipe';
 
 var routes = [
   {
@@ -57,7 +58,8 @@ var routes = [
     RegisterComponent,
     LoginComponent,
     UserComponent,
-    UserMessagesComponent
+    UserMessagesComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,

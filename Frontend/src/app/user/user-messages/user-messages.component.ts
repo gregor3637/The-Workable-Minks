@@ -6,7 +6,7 @@ import { SportsProviderService } from './../../services/sports-provider.service'
 @Component({
   selector: 'app-user-messages',
   templateUrl: './user-messages.component.html',
-  styleUrls: ['./user-messages.component.css']
+  styleUrls: ['./user-messages.component.css'],
 })
 export class UserMessagesComponent implements OnInit {
   public model = {
