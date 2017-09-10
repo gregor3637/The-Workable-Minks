@@ -1,3 +1,4 @@
+import { UserMessagesComponent } from './user/user-messages/user-messages.component';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule, MdButtonModule, MdCheckboxModule } from '@angular/material';
@@ -55,7 +56,8 @@ var routes = [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    UserMessagesComponent
   ],
   imports: [
     BrowserModule,
