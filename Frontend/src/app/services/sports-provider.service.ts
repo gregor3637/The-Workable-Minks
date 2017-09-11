@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdSnackBar } from '@angular/material';
-import { Subject } from 'rxjs/Rx'
+import { Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class SportsProviderService {
@@ -9,7 +9,6 @@ export class SportsProviderService {
   public sports = ['football', 'basketball', 'volleyball'];
   private subject = new Subject();
 
-  constructor(private http:Http, private sb:MdSnackBar) {
+  constructor(private http: Http, private sb: MdSnackBar) {
   }
-
 }

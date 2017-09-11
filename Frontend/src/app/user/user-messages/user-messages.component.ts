@@ -14,12 +14,12 @@ export class UserMessagesComponent implements OnInit {
   };
   sports = this.sportsProvider.sports;
 
-  constructor(private webService:WebService,
-    private sportsProvider:SportsProviderService) { }
-  
+  constructor(private webService: WebService,
+    private sportsProvider: SportsProviderService) { }
+
     ngOnInit() {
       this.webService.getUser().subscribe((res) => {
-        //filter here
+        // filter here
         this.model.messages = res.messages;
       });
     }

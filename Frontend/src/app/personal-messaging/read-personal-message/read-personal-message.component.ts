@@ -10,13 +10,13 @@ import { WebService } from './../../services/web.service';
 })
 export class ReadPersonalMessageComponent implements OnInit {
   public msgs = [];
-  constructor(private webService:WebService, private router:ActivatedRoute, private auth: AuthService) {}
+  constructor(public webService: WebService, private router: ActivatedRoute, private auth: AuthService) {}
 
-  ngOnInit(){
-    var userName = this.router.snapshot.params.name;
+  ngOnInit() {
+    const userName = this.router.snapshot.params.name;
     console.log('messages.ts > ngOnInit > name = ' + userName);
     this.webService.getPersonalMessages(userName);
 
     this.webService.getUser().subscribe();
-  }  
+  }
 }

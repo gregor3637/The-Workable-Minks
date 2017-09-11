@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
     messages: []
   };
 
-  constructor(private webService:WebService) { }
+  constructor(private webService: WebService) { }
 
   ngOnInit() {
     this.webService.getUser().subscribe((res) => {
@@ -27,7 +27,7 @@ export class UserComponent implements OnInit {
   }
 
   updateUserData() {
-    //Todo: angular materials notification when we change the data
+    // Todo: angular materials notification when we change the data
     this.webService.saveUser(this.model).subscribe();
   }
 }

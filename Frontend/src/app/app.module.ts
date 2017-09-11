@@ -3,7 +3,7 @@ import { ReadPersonalMessageComponent } from './personal-messaging/read-personal
 // import { PersonalMessagingModule } from './personal-messaging/personal-messaging.module';
 import { UserMessagesComponent } from './user/user-messages/user-messages.component';
 import { Component, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, MdButtonModule, MdCheckboxModule } from '@angular/material';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
@@ -25,26 +25,26 @@ import { SportsProviderService } from './services/sports-provider.service';
 import { TitleCasePipe } from './pipes/title-case.pipe';
 // import { PersonalMessagingRoutingModule } from './personal-messaging/personal-messaging-routing.module';
 
-var routes = [
+const routes = [
   {
     path: '',
-    component:HomeComponent
+    component: HomeComponent
   },
   {
     path: 'messages',
-    component:MessagesComponent
+    component: MessagesComponent
   },
   {
     path: 'messages/:name',
-    component:MessagesComponent
+    component: MessagesComponent
   },
   {
     path: 'personal-messages',
-    component:ReadPersonalMessageComponent
+    component: ReadPersonalMessageComponent
   },
   {
     path: 'personal-messages/:name',
-    component:ReadPersonalMessageComponent
+    component: ReadPersonalMessageComponent
   },
   {
     path: 'register',

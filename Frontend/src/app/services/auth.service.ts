@@ -1,5 +1,4 @@
 import { Headers, Http, RequestOptions } from '@angular/http';
-
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,8 +8,8 @@ export class AuthService {
   private BASE_URL = 'http://localhost:1234/auth';
   NAME_KEY = 'name';
   TOKEN_KEY = 'token';
-  
-  constructor(private http:Http, private router:Router) { }
+
+  constructor(private http: Http, private router: Router) { }
 
   get name() {
     return localStorage.getItem(this.NAME_KEY);
@@ -21,7 +20,7 @@ export class AuthService {
   }
 
   get tokenHeader() {
-    var header = new Headers({
+    const header = new Headers({
       'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)
     });
 
@@ -42,7 +41,7 @@ export class AuthService {
       console.log(error);
     });
   }
-  
+
   register(user) {
     delete user.confirmPassword;
     this.http.post(this.BASE_URL + '/register', user).subscribe((res) => {
@@ -51,15 +50,15 @@ export class AuthService {
   }
 
   authenticate(res) {
-    var authResponse = res.json();
+    const authResponse = res.json();
 
-    if(!authResponse.token) {
-      return
+    if (!authResponse.token) {
+      return;
     }
 
     localStorage.setItem(this.TOKEN_KEY, authResponse.token);
     localStorage.setItem(this.NAME_KEY, authResponse.firstName);
-    
+
     this.router.navigate(['/']);
   }
 

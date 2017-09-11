@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
 import { AuthService } from './../services/auth.service';
 
 @Component({
@@ -10,20 +9,20 @@ import { AuthService } from './../services/auth.service';
 })
 export class NavComponent implements OnInit {
   private showSports = false;
-  constructor(private auth:AuthService) { }
+  constructor(public auth: AuthService) { }
 
   testSports = [
     'box',
     'box',
     'box',
     'box'
-  ]
+  ];
 
   ngOnInit() {
   }
-  
-  getGenderStyleClass(){
-    console.log('nav getGender called')
+
+  getGenderStyleClass() {
+    console.log('nav getGender called');
     return 'example-header-image-female';
   }
 

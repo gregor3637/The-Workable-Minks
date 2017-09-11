@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { MdSnackBar } from '@angular/material';
-import { Subject } from 'rxjs/Rx'
+import { Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class WebService {
@@ -17,11 +17,11 @@ export class WebService {
   private personalMessageSubject = new Subject();
   public personalMessagesObservable = this.personalMessageSubject.asObservable();
 
-  constructor(private http: Http, private sb: MdSnackBar, private auth:AuthService) {
+  constructor(private http: Http, private sb: MdSnackBar, private auth: AuthService) {
     this.getMessages('');
   }
 
-  getMessages(user){ 
+  getMessages(user) {
     console.log('web.ts > getMessages > user = ' + user);
     user = (user)
       ? '/' + user
@@ -31,27 +31,27 @@ export class WebService {
     this.http.get(this.BASE_URL + '/messages' + user).subscribe((response) => {
       this.messageStore = response.json();
       this.messageSubject.next(this.messageStore);
-    },(error) => {
+    }, (error) => {
       this.handleErrors('unable to get messages');
     });
   }
 
-  getPersonalMessages(user){
+  getPersonalMessages(user) {
     user = (user)
       ? '/' + user
       : '';
-      
+
     this.http.get(this.BASE_URL + '/personal-messages' + user).subscribe((response) => {
       this.personalMessageStore = response.json();
       this.personalMessageSubject.next(this.personalMessageStore);
-    },(error) => {
+    }, (error) => {
       this.handleErrors('unable to get personal messages');
     });
   }
 
   async postMessage(message) {
     try {
-      var response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
+      const response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
       this.messageStore.push(response.json());
       this.messageSubject.next(this.messageStore);
     } catch (error) {
@@ -77,7 +77,7 @@ export class WebService {
 
   async sendPersonalMessage(message) {
     try {
-      var response = await this.http.post(this.BASE_URL + '/personal-messages', message).toPromise();
+      const response = await this.http.post(this.BASE_URL + '/personal-messages', message).toPromise();
       this.personalMessageStore.push(response.json());
       this.personalMessageSubject.next(this.personalMessageStore);
       console.log(this.personalMessagesObservable);

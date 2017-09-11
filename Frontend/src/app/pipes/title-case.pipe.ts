@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TitleCasePipe implements PipeTransform {
 
-  public transform(input:string): string{
+  public transform(input: string): string {
     if (!input) {
         return '';
     } else {
