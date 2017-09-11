@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from './../../services/auth.service';
 import { WebService } from './../../services/web.service';
 
@@ -21,7 +22,9 @@ export class NewPersonalMessageComponent implements OnInit {
   }
 
   sendMessage() {
+    this.message.date = new Date() + '';
     console.log('new-personal-message > sendMessage > message = ' + JSON.stringify(this.message));
+    
     this.webService.sendPersonalMessage(this.message);
   }
 }
