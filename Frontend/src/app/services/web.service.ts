@@ -13,7 +13,11 @@ export class WebService {
   private messageSubject = new Subject();
   public messagesObservable = this.messageSubject.asObservable();
 
-  constructor(private http:Http, private sb:MdSnackBar, private auth:AuthService) {
+  public personalMessageStore;
+  private personalMessageSubject = new Subject();
+  public personalMessagesObservable = this.personalMessageSubject.asObservable();
+
+  constructor(private http: Http, private sb: MdSnackBar, private auth:AuthService) {
     this.getMessages('');
   }
 
@@ -29,6 +33,19 @@ export class WebService {
       this.messageSubject.next(this.messageStore);
     },(error) => {
       this.handleErrors('unable to get messages');
+    });
+  }
+
+  getPersonalMessages(user){
+    user = (user)
+      ? '/' + user
+      : '';
+      
+    this.http.get(this.BASE_URL + '/personal-messages' + user).subscribe((response) => {
+      this.personalMessageStore = response.json();
+      this.personalMessageSubject.next(this.personalMessageStore);
+    },(error) => {
+      this.handleErrors('unable to get personal messages');
     });
   }
 
@@ -58,7 +75,18 @@ export class WebService {
       });
   }
 
-  private handleErrors(error) {
+  async sendPersonalMessage(message) {
+    try {
+      var response = await this.http.post(this.BASE_URL + '/personal-messages', message).toPromise();
+      this.personalMessageStore.push(response.json());
+      this.personalMessageSubject.next(this.personalMessageStore);
+      console.log(this.personalMessagesObservable);
+    } catch (error) {
+      this.handleErrors('unable to send message');
+    }
+  }
+
+  public handleErrors(error) {
       this.sb.open(error, 'close', {duration: 4000});
   }
 }

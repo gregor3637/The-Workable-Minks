@@ -1,0 +1,15 @@
+<md-card class="card">
+    <md-card-title>Send a personal message:</md-card-title>
+    <md-card-content>
+        <md-input-container>
+            <textarea [(ngModel)]="message.to" mdInput placeholder="Send to:"></textarea>
+        </md-input-container>
+        <md-input-container>
+            <textarea [(ngModel)]="message.content" mdInput placeholder="Personal message"></textarea>
+        </md-input-container>
+
+        <md-card-actions>
+            <button (click)="sendMessage()" md-button color="primary">SEND</button>
+        </md-card-actions>
+    </md-card-content>
+</md-card>>

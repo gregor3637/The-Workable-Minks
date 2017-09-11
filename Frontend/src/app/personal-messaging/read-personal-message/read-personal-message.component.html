@@ -1,0 +1,13 @@
+<md-card>
+  <md-card-title>Inbox:</md-card-title>
+  <div *ngFor="let msg of webService.personalMessagesObservable | async">
+      <md-card class="card">
+        <md-card-title>
+          {{ msg.from }}
+        </md-card-title>
+        <md-card-content>
+          {{ msg.to }}
+        </md-card-content>
+      </md-card>
+    </div>
+</md-card>

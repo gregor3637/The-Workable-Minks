@@ -1,11 +1,9 @@
 <md-card class="card">
     <md-card-content>
-
         <div layout="row" layout-align="space-between center">
             <span>Select a sport:</span>
             <md-select [(ngModel)]="message.sport" placeholder="Sport" class="md-no-underline" required md-no-asterisk="false">
-              <md-option *ngFor="let s of sports" [value]="s">{{s | titleCase}}</md-option>
-              
+              <md-option *ngFor="let s of sports" [value]="s">{{ s | titleCase }}</md-option>              
             </md-select>
           </div>
 

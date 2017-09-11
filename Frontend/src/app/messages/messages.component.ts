@@ -17,6 +17,5 @@ export class MessagesComponent {
     this.webService.getMessages(userName);
 
     this.webService.getUser().subscribe();
-  }
-  
+  }  
 }

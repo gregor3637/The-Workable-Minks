@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../services/auth.service';
-import { WebService } from "../services/web.service";
+import { WebService } from './../services/web.service';
 import { SportsProviderService } from './../services/sports-provider.service';
 import { MdSnackBar } from '@angular/material';
 
@@ -18,16 +18,13 @@ export class NewMessageComponent implements OnInit {
     'owner': this.auth.name,
     'text': '',
     'sport': ''
-  }
-  
-  constructor(private webService:WebService, 
-    private auth:AuthService, 
-    private sportsProvider:SportsProviderService) { 
-      
-    }
-    
+  };
+  constructor(private webService: WebService,
+    private auth: AuthService,
+    private sportsProvider: SportsProviderService) { }
+
   ngOnInit() {
-    this.sports = this.sportsProvider.sports;    
+    this.sports = this.sportsProvider.sports;
   }
 
   postMessage() {

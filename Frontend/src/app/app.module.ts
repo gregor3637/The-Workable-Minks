@@ -1,3 +1,6 @@
+import { NewPersonalMessageComponent } from './personal-messaging/new-personal-message/new-personal-message.component';
+import { ReadPersonalMessageComponent } from './personal-messaging/read-personal-message/read-personal-message.component';
+// import { PersonalMessagingModule } from './personal-messaging/personal-messaging.module';
 import { UserMessagesComponent } from './user/user-messages/user-messages.component';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -20,6 +23,7 @@ import { UserComponent } from './user/user.component';
 import { WebService } from './services/web.service';
 import { SportsProviderService } from './services/sports-provider.service';
 import { TitleCasePipe } from './pipes/title-case.pipe';
+// import { PersonalMessagingRoutingModule } from './personal-messaging/personal-messaging-routing.module';
 
 var routes = [
   {
@@ -33,6 +37,14 @@ var routes = [
   {
     path: 'messages/:name',
     component:MessagesComponent
+  },
+  {
+    path: 'personal-messages',
+    component:ReadPersonalMessageComponent
+  },
+  {
+    path: 'personal-messages/:name',
+    component:ReadPersonalMessageComponent
   },
   {
     path: 'register',
@@ -59,7 +71,9 @@ var routes = [
     LoginComponent,
     UserComponent,
     UserMessagesComponent,
-    TitleCasePipe
+    TitleCasePipe,
+    ReadPersonalMessageComponent,
+    NewPersonalMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +83,9 @@ var routes = [
     MaterialModule,
     FormsModule,
     AngularFontAwesomeModule,
-    ReactiveFormsModule
-     ,RouterModule.forRoot(routes)
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    // PersonalMessagingModule
   ],
   providers: [
     WebService,
