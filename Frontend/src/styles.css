@@ -8,3 +8,7 @@ body {
 .card {
     margin-top: 8px;
 }
+
+.specialColor{
+    background: lightcyan
+}

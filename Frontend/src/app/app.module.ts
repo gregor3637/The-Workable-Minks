@@ -15,6 +15,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { NavComponent } from './nav/nav.component';
 import { NewMessageComponent } from './new-message/new-message.component';
 import { NewPersonalMessageComponent } from './personal-messaging/new-personal-message/new-personal-message.component';
+import { PersonalMessagingModule } from "./personal-messaging/personal-messaging.module";
 import { ReadPersonalMessageComponent } from './personal-messaging/read-personal-message/read-personal-message.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
@@ -40,9 +41,7 @@ import { UserMessagesComponent } from './user/user-messages/user-messages.compon
     LoginComponent,
     UserComponent,
     UserMessagesComponent,
-    TitleCasePipe,
-    ReadPersonalMessageComponent,
-    NewPersonalMessageComponent
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,
@@ -55,6 +54,7 @@ import { UserMessagesComponent } from './user/user-messages/user-messages.compon
     AngularFontAwesomeModule,
     ReactiveFormsModule
     ,CoreModule
+    ,PersonalMessagingModule
     // ,RouterModule.forRoot(routes),
     // PersonalMessagingModule
   ],

@@ -1,6 +1,7 @@
-import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 import { WebService } from './../../services/web.service';
 
 @Component({
@@ -8,15 +9,12 @@ import { WebService } from './../../services/web.service';
   templateUrl: './read-personal-message.component.html',
   styleUrls: ['./read-personal-message.component.css']
 })
-export class ReadPersonalMessageComponent implements OnInit {
-  public msgs = [];
-  constructor(public webService: WebService, private router: ActivatedRoute, private auth: AuthService) {}
-
-  ngOnInit() {
-    const userName = this.router.snapshot.params.name;
-    console.log('messages.ts > ngOnInit > name = ' + userName);
-    this.webService.getPersonalMessages(userName);
-
-    this.webService.getUser().subscribe();
+export class ReadPersonalMessageComponent {
+  _messages = [];
+  @Input() set msgs(val){
+    console.log('=======================================');
+    console.log(val);
+    console.log('=======================================');
+    this._messages = val;
   }
 }

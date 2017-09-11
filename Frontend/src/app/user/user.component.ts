@@ -12,7 +12,8 @@ export class UserComponent implements OnInit {
   model = {
     firstName: '',
     lastName: '',
-    messages: []
+    messages: [],
+    personalMessagesIn:[]
   };
 
   constructor(private webService: WebService) { }
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
       this.model.firstName = res.firstName;
       this.model.lastName = res.lastName;
       this.model.messages = res.messages;
+      this.model.personalMessagesIn = res.personalMessagesIn;
     });
   }
 

@@ -8,7 +8,7 @@ var messages = [
     {text: '1 text', owner: 'Peshoez', sport: 'football'},
     {text: '2 text', owner: 'penelope', sport: 'football'},
     {text: '3 text', owner: 'Gosho', sport: 'basketball'},
-    {text: '4 text', owner: 'asd', sport: 'volleyball'}, 
+    {text: '4 text', owner: 'Pesho', sport: 'volleyball'}, 
 ];
 
 var users = [
@@ -27,6 +27,22 @@ var users = [
             //     date : string
             // }
         ],
+        personalMessagesIn: [
+            {
+                from : 'b',
+                content : 'shte igraem li futbol ohliov?',
+                date : '11/11/2017'
+            }
+        ]
+    },
+    {
+        firstName: 'b',
+        lastName: 'b',
+        email: 'b',
+        password: 'b',
+        id: 1,
+        messages: [],
+        personalMessagesOut: [],
         personalMessagesIn: []
     }
 ];
@@ -93,30 +109,16 @@ api.post('/messages', (req, res) => {
 api.post('/personal-messages', (req, res) => {
     console.log('posting personal message');
     console.log(req.body);
-    var index = -1;
-    for(i = 0; i < users.length; i++) {
-        if (users[i].firstName == req.body.from){
-            index = i;
-            break;
-        }
-    }   
 
-    users[index].personalMessagesOut.push(req.body); 
+    var user = users.filter(providedUser => providedUser.firstName === req.body.to)[0];
+    console.log('#####################');
+    console.log(user);
+    console.log('#####################');
 
-    index = -1;
-    for(i = 0; i < users.length; i++) {
-        if (users[i].firstName == req.body.to){
-            index = i;
-            break;
-        }
-    } 
+    var dataOfInterest = {from: req.body.from, content: req.body.content, date: req.body.date}
+    user.personalMessagesIn.push(dataOfInterest); 
 
-    if (index != -1){
-        users[index].personalMessagesIn.push(req.body);     
-        
-    }  
-    console.log(users);
-    res.json(req.body);
+    res.status(200);
 });
 
 api.get('/messages', (req, res) => {

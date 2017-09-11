@@ -80,7 +80,9 @@ export class WebService {
       const response = await this.http.post(this.BASE_URL + '/personal-messages', message).toPromise();
       this.personalMessageStore.push(response.json());
       this.personalMessageSubject.next(this.personalMessageStore);
+      console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz');
       console.log(this.personalMessagesObservable);
+      console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz');
     } catch (error) {
       this.handleErrors('unable to send message');
     }
