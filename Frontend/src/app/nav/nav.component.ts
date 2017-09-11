@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { AuthService } from './../services/auth.service';
 
 @Component({
@@ -12,10 +13,9 @@ export class NavComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   testSports = [
-    'box',
-    'box',
-    'box',
-    'box'
+    'football',
+    'basketball',
+    'volleyball'
   ];
 
   ngOnInit() {

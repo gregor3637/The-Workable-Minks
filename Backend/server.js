@@ -5,10 +5,10 @@ var jwt = require('jsonwebtoken');
 
 var jwtSecret = '123';
 var messages = [
-    {text: '1 text', owner: 'Peshoez'},
-    {text: '2 text', owner: 'penelope'},
-    {text: '3 text', owner: 'Gosho'},
-    {text: '4 text', owner: 'asd'}
+    {text: '1 text', owner: 'Peshoez', sport: 'football'},
+    {text: '2 text', owner: 'penelope', sport: 'football'},
+    {text: '3 text', owner: 'Gosho', sport: 'basketball'},
+    {text: '4 text', owner: 'asd', sport: 'volleyball'}, 
 ];
 
 var users = [
