@@ -1,8 +1,7 @@
-import { PersonalMessagingModule } from './../personal-messaging/personal-messaging.module';
-
 import { Component, OnInit } from '@angular/core';
-import { WebService } from './../services/web.service';
 
+import { PersonalMessagingModule } from './../personal-messaging/personal-messaging.module';
+import { WebService } from './../services/web.service';
 
 @Component({
   selector: 'app-user',
