@@ -41,7 +41,7 @@
       <span>Login</span>
     </md-toolbar>
 
-    <md-toolbar *ngIf="auth.isAuthenticated" (click)="auth.logout()" class="myHover" style="cursor: pointer">
+    <md-toolbar *ngIf="auth.isAuthenticated" (click)="auth.logout()" routerLink="/" class="myHover" style="cursor: pointer">
       <span>Logout</span>
     </md-toolbar>
 
